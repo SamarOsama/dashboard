@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "name": "test",
+      "username": "testuser",
+      "email": "123@test.com",
+      "group": "Managers",
+      "status": "Active",
+      "createdOn": "2023-10-28T14:48:48.759Z",
+      "id": 1
+    },
+    {
+      "name": "tttt",
+      "username": "ttttm",
+      "email": "ttttu@g.com",
+      "group": "Managers",
+      "status": "Active",
+      "createdOn": "2023-10-28T14:48:48.759Z",
+      "id": 2
+    }
+  ]
+}

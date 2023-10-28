@@ -1,38 +1,28 @@
-.App {
-  text-align: center;
+.custom_drawer_color {
+  background-color: #050E2D;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
+  background-color: #050E2D !important;
+  color: #848998 !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.css-i4bv87-MuiSvgIcon-root {
+  color: #848998 !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.cutom-dropdown {
+  background-color: #22A565 !important;
+  color: #fff !important;
+
 }
 
-.App-link {
-  color: #61dafb;
+.cutom-dropdown-bg {
+  background-color: #1E2642;
+  border-left: 2px solid #22A565;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input[type=date]:required:invalid::-webkit-datetime-edit {
+  color: transparent;
 }
