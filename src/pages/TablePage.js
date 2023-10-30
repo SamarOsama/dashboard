@@ -1,15 +1,18 @@
 import { Typography } from '@mui/material'
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { Button, Col, Form, Modal } from 'react-bootstrap'
+import React, { useContext, useEffect, useState } from 'react'
+import { Button, Col, Form, Modal, Spinner } from 'react-bootstrap'
 import DataTable from '../components/DataTable'
 import EnhancedTable from '../components/DataTable'
-import { getUsers } from '../services/AddUsers'
+import UsersContext from '../context/UsersContext'
 import Urls from '../services/Urls'
 
 function TablePage() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
+    const { getAllUsersOnStartUp } = useContext(UsersContext)
+    const [Loading, setLoading] = useState(false)
+
     const handleShow = () => setShow(true);
     const [formData, setFormData] = useState({
         name: '',
@@ -21,9 +24,12 @@ function TablePage() {
     });
     // Function to handle form submission
     const handleSubmit = async (event) => {
+        setLoading(true)
         event.preventDefault();
         const res = await axios.post(Urls.Users_url, formData)
         console.log(formData);
+        setLoading(false)
+        getAllUsersOnStartUp()
 
     };
 
@@ -40,13 +46,15 @@ function TablePage() {
 
     return (
         <>
-            <div className='d-flex justify-content-between'>
-                <h3>User Managment </h3>
-                <Col xs={1}>
-                    <button className='btn btn-danger w-100' onClick={handleShow}  >Add</button>
+            <div className='d-flex justify-content-between '>
+                <h5>User Managment </h5>
+                <Col xs={2}>
+                    <button className='btn btn-success w-75 mb-3 ' onClick={handleShow}  >+ Add New</button>
                 </Col>
             </div>
-            <DataTable />
+            {Loading ? <><div style={{ minHeight: '70vh' }} className="d-flex justify-content-center align-items-center "><Spinner animation="border" variant='main' role="status" >
+                <span className="visually-hidden">Loading...</span>
+            </Spinner></div></> : <DataTable />}
             <Modal
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
@@ -126,12 +134,12 @@ function TablePage() {
                         {/* Add more form fields here */}
 
 
-                        <Modal.Footer>
+                        <Modal.Footer className='mt-4'>
                             <Button variant="secondary" onClick={handleClose}>
-                                Close
+                                Cancel
                             </Button>
-                            <Button variant="primary" type="submit" onClick={handleClose}>
-                                Save Changes
+                            <Button variant="success" type="submit" onClick={handleClose}>
+                                Add User
                             </Button>
                         </Modal.Footer>
                     </Form></Modal.Body>

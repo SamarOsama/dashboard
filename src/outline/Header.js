@@ -19,12 +19,16 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import Notification from '@mui/icons-material/Notifications';
+import Help from '@mui/icons-material/Help';
+
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
 import logo from '../assets/logo.png'
-import { Table } from '@mui/material';
+import { Badge, Table } from '@mui/material';
 import TablePage from '../pages/TablePage';
+import { AccountCircle } from '@mui/icons-material';
 const drawerWidth = 240;
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
@@ -100,103 +104,126 @@ function Header() {
 
     return (
 
-        <>    <Box sx={{ display: 'flex', }}>
-            <CssBaseline />
-            <AppBar className='custom_drawer_color' position="fixed" open={open}>
-                <Toolbar >
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        sx={{ mr: 2, ...(open && { display: 'none' }) }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-                        Persistent drawer
+        <>
+            <Box sx={{ display: 'flex', }}>
+                <CssBaseline />
+                <AppBar position="fixed" open={open}>
+                    <Toolbar className=' d-flex justify-content-between' style={{ backgroundColor: 'white' }} >
+                        <div className='d-flex justify-content-center align-items-center'>
+                            <IconButton
+                                aria-label="open drawer"
+                                onClick={handleDrawerOpen}
+                            >
+                                <MenuIcon />
+                                <p className='mb-0 px-2' style={{ fontSize: '14px', color: 'black' }}>GoodMorning! <span className='text-muted'>Tue Jan 12,2011 9:39AM</span></p>
 
-                    </Typography>
-                </Toolbar>
-            </AppBar>
-            <Drawer
-                sx={{
-                    width: drawerWidth,
-                    flexShrink: 0,
-                    '& .MuiDrawer-paper': {
+
+                            </IconButton>
+                        </div>
+                        <div>
+                            <Box sx={{ flexGrow: 1 }} />
+                            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                                <IconButton size="small" color="inherit">
+                                    <Help />
+                                </IconButton>
+                                <IconButton size="small" color="inherit">
+                                    <Badge badgeContent={4} color="error">
+                                        <Notification />
+                                    </Badge>
+                                </IconButton>
+                                <IconButton
+                                    size="large"
+                                    aria-label="account of current user"
+                                    aria-haspopup="true"
+                                    color="inherit"
+                                >
+                                    <AccountCircle />
+                                </IconButton>
+                            </Box>
+
+                        </div>
+
+
+                    </Toolbar>
+                </AppBar>
+                <Drawer
+                    sx={{
                         width: drawerWidth,
-                        height: '100%',
-                        boxSizing: 'border-box',
-                    },
+                        flexShrink: 0,
+                        '& .MuiDrawer-paper': {
+                            width: drawerWidth,
+                            height: '100%',
+                            boxSizing: 'border-box',
+                        },
 
-                }}
+                    }}
 
-                variant="persistent"
-                anchor="left"
-                height="100%"
-                open={open}
-            >
-                <DrawerHeader
-                    className='custom_drawer_color'>
-                    <img src={logo} className="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" />
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme?.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                    </IconButton>
-                </DrawerHeader>
-
-                <Divider />
-                <List sx={{ width: '100%', maxWidth: 360 }}
-                    component="nav"
-                    aria-labelledby="nested-list-subheader"
-                    className='custom_drawer_color'
+                    variant="persistent"
+                    anchor="left"
+                    height="100%"
+                    open={open}
                 >
+                    <DrawerHeader
+                        className='custom_drawer_color'>
+                        <img src={logo} className="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" />
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme?.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                        </IconButton>
+                    </DrawerHeader>
+
+                    <Divider />
+                    <List sx={{ width: '100%', maxWidth: 360 }}
+                        component="nav"
+                        aria-labelledby="nested-list-subheader"
+                        className='custom_drawer_color'
+                    >
 
 
-                    <ListItemButton className={ATMList ? `cutom-dropdown` : ``} >
-                        <ListItemText >ATM Settings</ListItemText>
-                        {ATMList ? <ExpandLess /> : <ExpandMore />}
-                    </ListItemButton>
-                    <ListItemButton className={BussniessList ? `cutom-dropdown` : ``} >
-                        <ListItemText >Business Settings</ListItemText>
-                        {BussniessList ? <ExpandLess /> : <ExpandMore />}
-                    </ListItemButton>
-
-                    <ListItemButton className={openList ? `cutom-dropdown` : ``} onClick={handleClick}>
-                        <ListItemText  >User Managment</ListItemText>
-                        {openList ? <ExpandLess /> : <ExpandMore />}
-                    </ListItemButton>
-                    <Collapse className="cutom-dropdown-bg" in={openList} timeout="auto" unmountOnExit>
-                        <List component="div" disablePadding>
-                            <ListItemButton >
-                                <ListItemText  >Users</ListItemText>
-                            </ListItemButton>
-                            <ListItemButton >
-                                <ListItemText  >Profiles</ListItemText>
-                            </ListItemButton>
-                            <ListItemButton >
-                                <ListItemText  >Groups</ListItemText>
-                            </ListItemButton>
-                        </List>
-                    </Collapse>
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemText >License Managment </ListItemText>
+                        <ListItemButton className={ATMList ? `cutom-dropdown` : ``} >
+                            <ListItemText >ATM Settings</ListItemText>
+                            {ATMList ? <ExpandLess /> : <ExpandMore />}
                         </ListItemButton>
-                    </ListItem>
+                        <ListItemButton className={BussniessList ? `cutom-dropdown` : ``} >
+                            <ListItemText >Business Settings</ListItemText>
+                            {BussniessList ? <ExpandLess /> : <ExpandMore />}
+                        </ListItemButton>
+
+                        <ListItemButton className={openList ? `cutom-dropdown` : ``} onClick={handleClick}>
+                            <ListItemText  >User Managment</ListItemText>
+                            {openList ? <ExpandLess /> : <ExpandMore />}
+                        </ListItemButton>
+                        <Collapse className="cutom-dropdown-bg" in={openList} timeout="auto" unmountOnExit>
+                            <List component="div" disablePadding>
+                                <ListItemButton >
+                                    <ListItemText  >Users</ListItemText>
+                                </ListItemButton>
+                                <ListItemButton >
+                                    <ListItemText  >Profiles</ListItemText>
+                                </ListItemButton>
+                                <ListItemButton >
+                                    <ListItemText  >Groups</ListItemText>
+                                </ListItemButton>
+                            </List>
+                        </Collapse>
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemText >License Managment </ListItemText>
+                            </ListItemButton>
+                        </ListItem>
 
 
-                </List>
-                <Divider />
+                    </List>
+                    <Divider />
 
-            </Drawer>
-            <Main open={open} >
-                <DrawerHeader />
-                <Typography paragraph>
-                    <TablePage />
-                </Typography>
+                </Drawer>
+                <Main open={open} >
+                    <DrawerHeader />
+                    <Typography paragraph>
+                        <TablePage />
+                    </Typography>
 
-            </Main>
-        </Box></>
+                </Main>
+            </Box></>
     )
 }
 

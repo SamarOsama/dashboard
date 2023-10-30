@@ -6,16 +6,14 @@
       "email": "123@test.com",
       "group": "Managers",
       "status": "Active",
-      "createdOn": "2023-10-28T14:48:48.759Z",
       "id": 1
     },
     {
-      "name": "tttt",
-      "username": "ttttm",
-      "email": "ttttu@g.com",
+      "name": "samartest",
+      "username": "testuser",
+      "email": "test@testest.com",
       "group": "Managers",
-      "status": "Active",
-      "createdOn": "2023-10-28T14:48:48.759Z",
+      "status": "Locked",
       "id": 2
     }
   ]

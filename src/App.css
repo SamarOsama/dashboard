@@ -1,3 +1,8 @@
+body {
+  background-color: #F8FAFB !important;
+}
+
+
 .custom_drawer_color {
   background-color: #050E2D;
 
@@ -25,4 +30,36 @@
 
 input[type=date]:required:invalid::-webkit-datetime-edit {
   color: transparent;
+}
+
+@media (min-width: 600px) {
+  .css-hyum1k-MuiToolbar-root {
+    min-height: unset !important;
+  }
+}
+
+.form-check-input:checked {
+  background-color: green !important;
+  border-color: green !important;
+}
+
+.modal-header {
+  padding: 9px 15px;
+  border-bottom: 1px solid #eee;
+  background-color: #050E2D;
+  color: #fff;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.modal-body {
+  background-color: #F8FAFB;
+}
+
+label {
+  font-weight: bold;
 }
